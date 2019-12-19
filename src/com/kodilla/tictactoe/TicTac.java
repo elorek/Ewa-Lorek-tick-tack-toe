@@ -10,7 +10,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class KolkoKrzyzyk extends Application {
+public class TicTac extends Application {
     private Image imageback = new Image("files/tlo.jpg");
 
 
@@ -19,12 +19,18 @@ public class KolkoKrzyzyk extends Application {
         BackgroundImage backgroundImage = new BackgroundImage(imageback, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
 
-        StackPane stackPane = new StackPane();
-        stackPane.setBackground(background);
-        Scene scene = new Scene(stackPane, 1600, 900, Color.BEIGE);
+        GridPane gridPane = new GridPane();
+        gridPane.setBackground(background);
+        Scene scene = new Scene(gridPane, 1600, 900, Color.BEIGE);
+        for(int i=0; i<3; i++) {
+            gridPane.getColumnConstraints().add(new ColumnConstraints(290));
+            gridPane.getRowConstraints().add(new RowConstraints(190));
+        }
 
-        stackPane.getChildren().add(MenuMaking.prepareMenu());
-        stackPane.setAlignment(Pos.TOP_LEFT);
+        gridPane.getChildren().add(MenuMaking.prepareMenu()); // menu dodac do scene poza gridpane
+        gridPane.setAlignment(Pos.TOP_LEFT);
+        //gridPane.getChildren().add(DialogWindow.prepareDialogWindow());
+        //zmienic rozmiar krzyzyka i kolka i constraintow
           
 
         primaryStage.setAlwaysOnTop(false);
@@ -36,7 +42,7 @@ public class KolkoKrzyzyk extends Application {
         primaryStage.setMinWidth(450.0);
         primaryStage.setTitle("Tic-tac-toe");
         primaryStage.setScene(scene);
-        Game game = new Game(new Board(), stackPane);
+        Game game = new Game(new Board(), gridPane);
         primaryStage.show();
     }
 

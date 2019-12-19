@@ -1,5 +1,7 @@
 package com.kodilla.tictactoe.logic;
 
+import javafx.scene.image.Image;
+
 public class Figure {
     private FigureColor color;
 
@@ -10,4 +12,5 @@ public class Figure {
     public FigureColor getColor() {
         return color;
     }
+
 }
