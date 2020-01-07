@@ -14,19 +14,29 @@ public class Board {
             }
         }
     }
+
     public Figure getFigure(int x, int y) {
         return figures[x][y];
     }
+
     public void setFigure(int x, int y, Figure figure) {
         figures[x][y] = figure;
     }
 
     public boolean doMove(int x, int y, Figure figure) {
         if(getFigure(x, y).getColor() == FigureColor.NONE) {
-            setFigure(x, y, figure);
+           setFigure(x, y, figure);
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void resetBoard () {
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 3; y++) {
+                setFigure(x, y, new Figure(FigureColor.NONE));
+            }
         }
     }
 }
